@@ -1,0 +1,100 @@
+<div id="page">
+  <div data-card-height="cover" class="card">
+    <div class="card-top notch-clear">
+      <a href="#" data-back-button class="me-auto icon icon-m">
+        <i class="font-14 fa fa-arrow-left color-white"></i>
+      </a>
+    </div>
+    <div class="card-center">
+      <div class="ps-5 pe-5">
+        <h1 class="color-white text-center font-800 font-40 mb-1">Sign In</h1>
+        <p class="color-white color-highlight text-center font-12">Let's get you logged in</p>
+
+        <!-- Formulario de Login -->
+        <form [formGroup]="loginForm">
+          <div class="input-style input-transparent no-borders has-icon validate-field">
+            <i class="fa fa-user"></i>
+            <input
+              type="text"
+              class="form-control validate-name"
+              id="form1a"
+              placeholder="Name"
+              formControlName="username"
+            />
+            <label for="form1a" class="color-blue-dark font-10 mt-1">Name</label>
+            <i
+              class="fa fa-times disabled invalid color-red-dark"
+              *ngIf="hasError('username', 'required')"
+            ></i>
+            <i
+              class="fa fa-check disabled valid color-green-dark"
+              *ngIf="!hasError('username', 'required') && loginForm.get('username')?.touched"
+            ></i>
+            <em *ngIf="hasError('username', 'required')" class="text-danger font-12">
+              This field is required
+            </em>
+            <em *ngIf="hasError('username', 'minlength')" class="text-danger font-12">
+              Username must be at least 4 characters
+            </em>
+          </div>
+
+          <div class="input-style input-transparent no-borders has-icon validate-field mt-4">
+            <i class="fa fa-lock"></i>
+            <input
+              type="password"
+              class="form-control validate-password"
+              id="form3a"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <label for="form3a" class="color-blue-dark font-10 mt-1">Password</label>
+            <i
+              class="fa fa-times disabled invalid color-red-dark"
+              *ngIf="hasError('password', 'required')"
+            ></i>
+            <i
+              class="fa fa-check disabled valid color-green-dark"
+              *ngIf="!hasError('password', 'required') && loginForm.get('password')?.touched"
+            ></i>
+            <em *ngIf="hasError('password', 'required')" class="text-danger font-12">
+              This field is required
+            </em>
+            <em *ngIf="hasError('password', 'minlength')" class="text-danger font-12">
+              Password must be at least 6 characters
+            </em>
+          </div>
+
+          <!-- Botón de Login como un a href -->
+            <a href="#"
+            class="btn btn-icon btn-m btn-full shadow-l rounded-sm bg-highlight text-uppercase font-900 text-start mt-4"
+            [ngClass]="{ 'disabled': isLoading || loginForm.invalid }"
+            (click)="onLogin($event)">
+            <i class="bg-transparent fa fa-sign-in-alt text-center"></i> LOGIN
+            </a>
+
+
+          <!-- Mensaje de error si falla el login -->
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3 text-center">
+            {{ errorMessage }}
+          </div>
+        </form>
+
+        <div class="divider mt-3"></div>
+        <a
+          href="#"
+          class="btn btn-icon btn-m btn-full shadow-l rounded-sm bg-facebook text-uppercase font-900 text-start"
+        >
+          <i class="bg-transparent fab fa-facebook-f text-center"></i>Login with Facebook
+        </a>
+        <a
+          href="#"
+          class="btn btn-icon btn-m btn-full shadow-l rounded-sm bg-twitter text-uppercase font-900 text-start mt-2"
+        >
+          <i class="bg-transparent fab fa-twitter text-center"></i>Login with Twitter
+        </a>
+      </div>
+    </div>
+    <div class="card-overlay-infinite preload-img" data-src="../../../../../assets/images/back/_bg-infinite.jpg"></div>
+        <div class="card-overlay bg-black opacity-80"></div>
+  </div>
+</div>

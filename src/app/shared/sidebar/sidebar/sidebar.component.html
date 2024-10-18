@@ -1,0 +1,103 @@
+<div id="menu-sidebar-left-1" class="menu menu-box-left menu-box-detached menu-sidebar" data-menu-width="310">
+  <div class="sidebar-content">
+    <div class="bg-theme mx-3 rounded-m shadow-m my-3">
+      <div class="d-flex px-2 pb-2 pt-2">
+        <div class="align-self-center">
+          <a routerLink="/profile"><img src="../../../../assets/images/pictures/7s.jpg" width="40" class="rounded-sm" alt="img"></a>
+        </div>
+        <div class="ps-2 align-self-center">
+          <h5 class="ps-1 mb-1 pt-1 line-height-xs font-17">Alex Doeson</h5>
+          <h6 class="ps-1 mb-0 font-400 opacity-40 font-12">Freelance Photographer</h6>
+        </div>
+        <div class="ms-auto">
+          <a href="#" data-bs-toggle="dropdown" class="icon icon-m ps-3">
+            <i class="fa fa-ellipsis-v font-18 color-theme"></i>
+          </a>
+          <div class="dropdown-menu bg-transparent border-0 mb-n5">
+            <div class="card card-style rounded-m shadow-xl me-1">
+              <div class="list-group list-custom-small list-icon-0 px-3 mt-n1">
+                <a routerLink="/profile" class="mb-n2 mt-n1">
+                  <span>Tu Perfil</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+                <a routerLink="/messages" class="mb-n2">
+                  <span>Mensajes</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+                <a routerLink="/settings" class="mb-n2">
+                  <span>Configuración</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+                <a href="#" (click)="logout()" class="mb-n1">
+                  <span>Cerrar Sesión</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-style">
+      <div class="content my-0">
+        <h5 class="font-700 text-uppercase opacity-40 font-12 pt-2 mb-0">Navegación</h5>
+        <div class="list-group list-custom-small list-icon-0">
+          <a routerLink="/home">
+            <i class="fa font-12 fa-home gradient-green rounded-sm color-white"></i>
+            <span>Página Principal</span>
+            <i class="fa fa-angle-right"></i>
+          </a>
+          <a routerLink="/components">
+            <i class="fa font-12 fa-cog gradient-red rounded-sm color-white"></i>
+            <span>Componentes</span>
+            <span class="badge bg-highlight">NUEVO</span>
+            <i class="fa fa-angle-right"></i>
+          </a>
+          <a routerLink="/packages">
+            <i class="fa font-12 fa-file gradient-blue rounded-sm color-white"></i>
+            <span>Paquetes de Páginas</span>
+            <i class="fa fa-angle-right"></i>
+          </a>
+          <a routerLink="/media">
+            <i class="fa font-12 fa-camera gradient-yellow rounded-sm color-white"></i>
+            <span>Media</span>
+            <i class="fa fa-angle-right"></i>
+          </a>
+          <a routerLink="/contact">
+            <i class="fa font-12 fa-image gradient-teal rounded-sm color-white"></i>
+            <span>Contacto</span>
+            <i class="fa fa-angle-right"></i>
+          </a>
+          <a href="#" (click)="logout()" class="mb-n1">
+            <span>Cerrar Sesión</span>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sidebar para usuarios no autenticados -->
+<div id="menu-auth-options" class="menu menu-box-left menu-box-detached menu-sidebar" data-menu-width="310">
+  <div class="sidebar-content">
+    <div class="card card-style">
+      <div class="content my-0">
+        <h5 class="font-700 text-uppercase opacity-40 font-12 pt-2 mb-0">Bienvenido</h5>
+        <div class="list-group list-custom-small list-icon-0">
+          <a routerLink="/login">
+            <i class="fa fa-sign-in-alt gradient-green rounded-sm color-white"></i>
+            <span>Iniciar Sesión</span>
+            <i class="fa fa-angle-right"></i>
+          </a>
+          <a routerLink="/register">
+            <i class="fa fa-user-plus gradient-blue rounded-sm color-white"></i>
+            <span>Registrarse</span>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

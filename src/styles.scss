@@ -1,0 +1,63 @@
+// Importing Bootstrap Variables to Reuse
+@import "assets/styles/bootstrap/functions";
+@import "assets/styles/bootstrap/variables";
+
+//Importing Sticky Utility Classes
+@import "assets/styles/sticky/variables";
+
+//Importing Sturctural Elements
+@import "assets/styles/sticky/typography";
+@import "assets/styles/sticky/structure";
+@import "assets/styles/sticky/logos";
+@import "assets/styles/sticky/header-bar";
+@import "assets/styles/sticky/footer-bar";
+@import "assets/styles/sticky/menu";
+@import "assets/styles/sticky/utilities";
+
+//Importing Components
+@import "assets/styles/components/preloader";
+@import "assets/styles/components/buttons";
+@import "assets/styles/components/icons";
+@import "assets/styles/components/accordion";
+@import "assets/styles/components/offline";
+@import "assets/styles/components/add-to-home";
+@import "assets/styles/components/ads";
+@import "assets/styles/components/alerts";
+@import "assets/styles/components/notifications";
+@import "assets/styles/components/back-to-top";
+@import "assets/styles/components/cards";
+@import "assets/styles/components/chips";
+@import "assets/styles/components/dividers";
+@import "assets/styles/components/switches";
+@import "assets/styles/components/checkradio";
+@import "assets/styles/components/inputs";
+@import "assets/styles/components/range";
+@import "assets/styles/components/list-group";
+@import "assets/styles/components/pricing";
+@import "assets/styles/components/toasts";
+@import "assets/styles/components/snackbars";
+@import "assets/styles/components/pagination";
+@import "assets/styles/components/search";
+@import "assets/styles/components/tabs";
+@import "assets/styles/components/working-hours";
+@import "assets/styles/components/iframes";
+@import "assets/styles/components/footer";
+@import "assets/styles/components/carousels";
+
+//Importing Pages
+@import "assets/styles/pages/calendar";
+@import "assets/styles/pages/chat";
+@import "assets/styles/pages/contact";
+@import "assets/styles/pages/map";
+@import "assets/styles/pages/media";
+@import "assets/styles/pages/timeline";
+//Rebuilt in Sticky v48
+
+//Importing Dark and Color Scheme
+@import "assets/styles/sticky/_dark";
+@import "assets/styles/sticky/colors";
+
+//Importing Plugins
+@import "assets/styles/plugins/splide";
+
+

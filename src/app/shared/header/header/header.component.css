@@ -1,0 +1,13 @@
+/* src/app/shared/header/header.component.scss */
+header {
+  background: get-color(glass-bg);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px get-color(shadow);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}/*# sourceMappingURL=header.component.css.map */

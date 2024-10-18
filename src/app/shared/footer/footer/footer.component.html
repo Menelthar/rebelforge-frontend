@@ -1,0 +1,9 @@
+<div id="footer-bar" class="footer-bar-1">
+  <a [routerLink]="'/home'"><i class="fa fa-home"></i><span>Inicio</span></a>
+  <a href="artistas.html"><i class="fa fa-user"></i><span>Artistas</span></a>
+  <a href="estudios.html"><i class="fa fa-building"></i><span>Estudios</span></a>
+  <a href="buscar.html"><i class="fa fa-search"></i><span>Buscar</span></a>
+  <a href="#" (click)="onCuentaClick()" [attr.data-menu]="isAuthenticated ? 'menu-sidebar-left-1' : 'menu-auth-options'">
+    <i class="fa fa-user-circle"></i><span>Cuenta</span>
+  </a>
+</div>

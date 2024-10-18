@@ -1,0 +1,61 @@
+<div id="page">
+    <div data-card-height="cover" class="card">
+        <div class="card-top notch-clear">
+            <a [routerLink]="['/login']" class="me-auto icon icon-m">
+                <i class="font-14 fa fa-arrow-left color-white"></i>
+            </a>
+        </div>
+        <div class="card-center">
+            <div class="ps-5 pe-5">
+                <h1 class="color-white text-center font-800 font-40 mb-1">Sign Up</h1>
+                <p class="color-highlight text-center font-12">Create an Account. It's free!</p>
+
+                <!-- Bloque para mostrar el mensaje de error general -->
+                <div *ngIf="errorMessage" class="alert alert-danger text-center mt-3">
+                    {{ errorMessage }}
+                </div>
+
+                <form [formGroup]="registerForm">
+                    <div class="input-style input-transparent no-borders has-icon validate-field">
+                        <i class="fa fa-user"></i>
+                        <input type="text" class="form-control" formControlName="name" id="form1a" placeholder="Name">
+                        <label for="form1a" class="color-blue-dark font-10 mt-1">Name</label>
+                        <em *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="text-danger font-12">(required)</em>
+                    </div>
+                    <div class="input-style input-transparent no-borders has-icon validate-field mt-2">
+                        <i class="fa fa-at"></i>
+                        <input type="email" class="form-control" formControlName="email" id="form1aa" placeholder="Email">
+                        <label for="form1aa" class="color-blue-dark font-10 mt-1">Email</label>
+                        <em *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger font-12">(required)</em>
+                    </div>
+                    <div class="input-style input-transparent no-borders has-icon validate-field mt-2">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" class="form-control" formControlName="password" id="form3a" placeholder="Choose a Password">
+                        <label for="form3a" class="color-blue-dark font-10 mt-1">Choose a Password</label>
+                        <em *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger font-12">(required, min 6 characters)</em>
+                    </div>
+                    <div class="input-style input-transparent no-borders has-icon validate-field mt-2">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" class="form-control" formControlName="confirmPassword" id="form3a1" placeholder="Confirm your Password">
+                        <label for="form3a1" class="color-blue-dark font-10 mt-1">Confirm your Password</label>
+                        <em *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched" class="text-danger font-12">(required, must match password)</em>
+                    </div>
+
+                    <div class="text-center mb-5 mt-5">
+                        <a [routerLink]="['/login']" class="color-white font-12 opacity-60">Already Registered? Sign in Here</a>
+                    </div>
+
+                    <!-- Enlace que luce como botón y ejecuta la función de registro -->
+                    <a href="#"
+                       class="btn btn-icon btn-m btn-full shadow-l rounded-sm bg-highlight text-uppercase font-900 text-start mt-4"
+                       [ngClass]="{ 'disabled': isLoading || registerForm.invalid }"
+                       (click)="onRegister($event)">
+                        <i class="bg-transparent fa fa-user-plus text-center"></i> CREATE ACCOUNT
+                    </a>
+                </form>
+            </div>
+        </div>
+        <div class="card-overlay-infinite preload-img" data-src="../../../../../assets/images/back/_bg-infinite.jpg"></div>
+        <div class="card-overlay bg-black opacity-80"></div>
+    </div>
+</div>
