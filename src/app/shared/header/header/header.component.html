@@ -1,5 +1,9 @@
-<div class="header header-fixed header-logo-center header-auto-show">
-  <a href="index.html" class="header-title">RebelForge</a>
-  <a href="#" data-back-button class="header-icon header-icon-1"
-    ><i class="fas fa-arrow-left"></i></a>
+<div class="header header-demo header-logo-center mb-4">
+  <a href="/home"><i class="fa fa-home"></i><span>Inicio</span></a>
+  <a href="artistas.html"><i class="fa fa-user"></i><span>Artistas</span></a>
+  <a href="estudios.html"><i class="fa fa-building"></i><span>Estudios</span></a>
+  <a href="buscar.html"><i class="fa fa-search"></i><span>Buscar</span></a>
+  <a href="#" (click)="onCuentaClick()" [attr.data-menu]="isAuthenticated ? 'menu-sidebar-left-1' : 'menu-auth-options'">
+    <i class="fa fa-user-circle"></i><span>Cuenta</span>
+  </a>
 </div>
