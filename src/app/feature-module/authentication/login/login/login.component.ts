@@ -30,7 +30,6 @@ export class LoginComponent {
     
     // Si el formulario es inválido o ya se está cargando, no continuar
     if (this.loginForm.invalid || this.isLoading) {
-      console.warn('Formulario inválido o ya se está intentando iniciar sesión');
       return;
     }
 
@@ -39,26 +38,21 @@ export class LoginComponent {
 
     const { username, password } = this.loginForm.value;
 
-    console.log('Intentando iniciar sesión con usuario:', username);
-
     this.authService.login(username, password).subscribe({
       next: (isLoggedIn) => {
         this.isLoading = false;
         if (isLoggedIn) {
-          console.log('Inicio de sesión exitoso');
           // Obtener la URL a la que intentaba acceder antes del login
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
-          console.log('Redirigiendo a:', returnUrl);
           this.router.navigateByUrl(returnUrl);
         } else {
-          console.warn('Inicio de sesión fallido: Usuario o contraseña incorrectos');
           this.errorMessage = 'Usuario o contraseña incorrectos';
         }
       },
       error: (error) => {
         this.isLoading = false;
         this.errorMessage = 'Ocurrió un problema al iniciar sesión. Inténtalo de nuevo más tarde.';
-        console.error('Error durante el login:', error);
+        console.error('Login error:', error);
       },
     });
   }

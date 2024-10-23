@@ -1,6 +1,7 @@
+// src/app/home/home.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { ArtistService } from '../artist-management/services/artist.service';
-import { AuthService } from '../shared/core/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   artists: any[] = [];
-  userName: string = 'Invitado'; // Nombre del usuario por defecto
+  userName: string = '';
   searchQuery: string = '';
   selectedLocation: string = '';
   selectedStyle: string = '';
@@ -18,13 +19,11 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private artistService: ArtistService,
-    private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadArtists();
-    this.getUserName(); // Obtener el nombre del usuario al iniciar
   }
 
   loadArtists(): void {
@@ -35,17 +34,12 @@ export class HomeComponent implements OnInit {
   }
 
   getUserName(): void {
-    this.authService.getCurrentUser().subscribe(user => {
-      if (user && user.name) {
-        this.userName = user.name; // Actualizar el nombre del usuario si está autenticado
-      } else {
-        this.userName = 'Invitado';
-      }
-    });
+    this.userName = 'Invitado';
   }
 
   onSearch(): void {
     if (this.searchQuery.trim() !== '') {
+      // Redirigir a la página de resultados de búsqueda con los parámetros
       this.router.navigate(['/buscar'], { 
         queryParams: {
           query: this.searchQuery,
