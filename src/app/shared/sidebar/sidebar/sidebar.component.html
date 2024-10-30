@@ -3,11 +3,15 @@
     <div class="bg-theme mx-3 rounded-m shadow-m my-3">
       <div class="d-flex px-2 pb-2 pt-2">
         <div class="align-self-center">
-          <a routerLink="/profile"><img src="../../../../assets/images/pictures/7s.jpg" width="40" class="rounded-sm" alt="img"></a>
+          <a routerLink="/profile">
+            <img src="../../../../assets/images/pictures/7s.jpg" width="40" class="rounded-sm" alt="img">
+          </a>
         </div>
         <div class="ps-2 align-self-center">
-          <h5 class="ps-1 mb-1 pt-1 line-height-xs font-17">Alex Doeson</h5>
-          <h6 class="ps-1 mb-0 font-400 opacity-40 font-12">Freelance Photographer</h6>
+          <!-- Mostrar el nombre del usuario autenticado -->
+          <h5 class="ps-1 mb-1 pt-1 line-height-xs font-17">{{ userName }}</h5>
+          <!-- Mostrar "Freelance Photographer" solo si el usuario es un artista -->
+          <h6 *ngIf="isArtist" class="ps-1 mb-0 font-400 opacity-40 font-12">Artista</h6>
         </div>
         <div class="ms-auto">
           <a href="#" data-bs-toggle="dropdown" class="icon icon-m ps-3">

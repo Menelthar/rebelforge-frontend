@@ -15,60 +15,90 @@
       </div>
     </div>
 
-    <div class="search-box search-header bg-theme card-style me-3 ms-3">
-      <i class="fa fa-search"></i>
-      <input
-        type="text"
-        class="border-0"
-        placeholder="Busca un artista o estudio..."
-        data-search
-      />
-      <a href="#" class="clear-search disabled mt-0"
-        ><i class="fa fa-times color-red-dark"></i></a>
-    </div>
+    <div class="search-section mt-4 px-3">
 
-    <div class="search-results disabled-search-list card card-style shadow-l">
-      <div class="content my-0 list-group list-custom-small">
-        <a
-          href="#"
-          class="d-flex py-2"
-          data-filter-item
-          data-filter-name="flash90 tatuajes blackwork"
-        >
-          <div>
-            <img
-              src="../../assets/images/flash90.jpg"
-              class="rounded-sm me-3"
-              width="50"
-              alt="img"
-            />
-          </div>
-          <div>
-            <span
-              class="color-highlight font-400 d-block pt-0 text-uppercase font-10"
-              >Blackwork</span
-            >
-            <strong class="color-theme font-16 d-block mt-n2">Flash 90</strong>
-          </div>
-          <div class="ms-auto text-end align-self-center pe-2">
-            <h5 class="line-height-xs font-18 pt-3">Ver Portafolio</h5>
-          </div>
-        </a>
+      <!-- Barra de Búsqueda Principal -->
+      <div class="search-box bg-theme card-style mb-3" (click)="toggleFilters(true)">
+        <div class="d-flex align-items-center">
+          <i class="fa fa-search me-2"></i>
+          <input
+            type="text"
+            class="border-0 flex-grow-1"
+            placeholder="Busca un artista o estudio..."
+            [formControl]="searchControl"
+            (focus)="toggleFilters(true)"
+            (blur)="hideFilters()"
+          />
+          <button class="clear-search ms-2 btn btn-link p-0" *ngIf="searchControl.value" (click)="clearSearch()">
+            <i class="fa fa-times color-red-dark"></i>
+          </button>
+        </div>
       </div>
-      <div class="search-no-results disabled">
+    
+      <!-- Filtros por Ubicación, Estado y Estilo -->
+      <div *ngIf="showFilters" class="filters card-style p-3 mb-3" (mouseenter)="toggleFilters(true)">
+        <div class="d-flex flex-wrap justify-content-between mb-2">
+          <div class="filter-item me-3 mb-2">
+            <label for="locationSelect" class="font-12">Ubicación:</label>
+            <select id="locationSelect" [(ngModel)]="selectedLocation" class="form-select form-select-sm" (change)="applyFilters()">
+              <option value="">Todas las Zonas</option>
+              <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
+            </select>
+          </div>
+          <div class="filter-item me-3 mb-2">
+            <label for="stateSelect" class="font-12">Estado:</label>
+            <select id="stateSelect" [(ngModel)]="selectedState" class="form-select form-select-sm" (change)="applyFilters()">
+              <option value="">Todos los Estados</option>
+              <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+            </select>
+          </div>
+          <div class="filter-item mb-2">
+            <label for="styleSelect" class="font-12">Estilo:</label>
+            <select id="styleSelect" [(ngModel)]="selectedStyle" class="form-select form-select-sm" (change)="applyFilters()">
+              <option value="">Todos los Estilos</option>
+              <option *ngFor="let style of styles" [value]="style">{{ style }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Resultados de la Búsqueda -->
+      <div class="search-results card card-style shadow-l mt-4" *ngIf="filteredArtists.length > 0">
+        <div class="content my-0 list-group list-custom-small">
+          <a *ngFor="let artist of filteredArtists" href="#" class="d-flex py-2">
+            <div>
+              <img
+                [src]="artist.imageUrl"
+                class="rounded-sm me-3"
+                width="50"
+                alt="img"
+              />
+            </div>
+            <div>
+              <span class="color-highlight font-400 d-block pt-0 text-uppercase font-10">{{ artist.style }}</span>
+              <strong class="color-theme font-16 d-block mt-n2">{{ artist.name }}</strong>
+              <span class="font-12 opacity-70 d-block">{{ artist.location }}</span>
+            </div>
+            <div class="ms-auto text-end align-self-center pe-2">
+              <h5 class="line-height-xs font-18 pt-3">Ver Portafolio</h5>
+            </div>
+          </a>
+        </div>
+      </div>
+    
+      <!-- Mensaje de Sin Resultados -->
+      <div class="search-no-results mt-4" *ngIf="filteredArtists.length === 0 && (searchQuery.trim() !== '' || selectedLocation || selectedState || selectedStyle)">
         <div class="content">
           <h3>No se encontró nada</h3>
           <p class="opacity-70 color-theme">
-            No hay resultados que coincidan con tu búsqueda. Prueba con otras palabras clave.
+            No hay resultados que coincidan con tu búsqueda. Prueba con otras palabras clave o cambia los filtros.
           </p>
-          <a
-            href="#"
-            class="btn btn-m btn-full bg-blue-dark text-uppercase rounded-sm font-700"
-            >Contactar</a
-          >
+          <button (click)="contactUs()" class="btn btn-m btn-full bg-blue-dark text-uppercase rounded-sm font-700">Contactar</button>
         </div>
       </div>
+    
     </div>
+    
 
     <div
       class="splide tripple-slider slider-no-arrows slider-no-dots mb-4 me-n3 mt-n2"
