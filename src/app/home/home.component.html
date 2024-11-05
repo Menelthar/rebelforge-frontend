@@ -65,7 +65,7 @@
       <!-- Resultados de la Búsqueda -->
       <div class="search-results card card-style shadow-l mt-4" *ngIf="filteredArtists.length > 0">
         <div class="content my-0 list-group list-custom-small">
-          <a *ngFor="let artist of filteredArtists" href="#" class="d-flex py-2">
+          <a *ngFor="let artist of filteredArtists" (click)="navigateToArtistProfile(artist.id)" class="d-flex py-2 artist-link">
             <div>
               <img
                 [src]="artist.imageUrl"

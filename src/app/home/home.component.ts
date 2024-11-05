@@ -102,6 +102,11 @@ export class HomeComponent implements OnInit {
     }, 200); // Pequeño retraso para evitar ocultar los filtros antes de seleccionar
   }
 
+  // Navegar al perfil del artista seleccionado
+  navigateToArtistProfile(artistId: string): void {
+    this.router.navigate(['/artist-profile', artistId]);
+  }
+
   contactUs(): void {
     alert('Gracias por tu interés, nos pondremos en contacto pronto.');
   }
