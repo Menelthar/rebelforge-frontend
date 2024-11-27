@@ -158,4 +158,24 @@ export class AuthService {
     console.log('Token obtenido:', token);
     return token;
   }
+   // Método para verificar la cuenta del usuario
+   // Método para verificar la cuenta del usuario
+verifyAccount(token: string): Observable<{ success: boolean, message?: string }> {
+  return this.http.get<{ success: boolean, message?: string }>(`${this.apiUrl}/users/verify/${token}`).pipe(
+    map(response => response), // Retorna el objeto de respuesta completo
+    catchError((error: HttpErrorResponse) => {
+      console.error('Error al verificar la cuenta:', error.message);
+      return of({ success: false, message: 'Token inválido o expirado' }); // Mensaje por defecto en caso de error
+    })
+  );
+}
+
+  
+  
+  
+
+
+  
+  
+
 }

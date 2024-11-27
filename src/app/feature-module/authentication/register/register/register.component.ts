@@ -58,46 +58,52 @@ export class RegisterComponent {
   onRegister(event?: Event): void {
     event?.preventDefault(); // Prevents the default behavior of the form submission
 
-
     if (this.registerForm.valid) {
-      this.isLoading = true;
-      this.errorMessage = '';
-      this.successMessage = '';
-      const { name, email, password } = this.registerForm.value;
+        this.isLoading = true; // Set loading state
+        this.errorMessage = ''; // Reset error message
+        this.successMessage = ''; // Reset success message
 
-      // Subscription to registration observable
-      this.authService.register(name, email, password)
-        .pipe(takeUntil(this.destroy$)) // Avoids memory leaks
-        .subscribe(
-          (success) => {
-            this.isLoading = false;
-            if (success) {
-              this.successMessage = '¡Registro exitoso! Iniciando sesión...';
-              
-              // Automatically logs in user after successful registration
-              this.authService.login(email, password)
-                .pipe(takeUntil(this.destroy$))
-                .subscribe(
-                  () => this.router.navigate(['/home']),
-                  (error) => {
-                    this.errorMessage = 'Error al iniciar sesión. Por favor, intenta iniciar sesión manualmente.';
-                    console.error('Error en el inicio de sesión:', error);
-                  }
-                );
-            } else {
-              this.errorMessage = 'Falló el registro. Por favor, intenta de nuevo.';
-            }
-          },
-          (error) => {
-            console.error('Error en el registro:', error);
-            this.errorMessage = 'Error en el registro. Por favor, inténtalo de nuevo más tarde.';
-            this.isLoading = false;
-          }
-        );
+        // Destructure values from the form
+        const { name, email, password } = this.registerForm.value;
+
+        // Subscription to registration observable
+        this.authService.register(name, email, password)
+            .pipe(takeUntil(this.destroy$)) // Avoids memory leaks
+            .subscribe(
+                (success) => {
+                    this.isLoading = false; // Stop loading state
+                    if (success) {
+                        this.successMessage = '¡Registro exitoso! Activando tu cuenta...';
+                        
+                        // Automatically logs in user after successful registration
+                        this.authService.login(email, password)
+                            .pipe(takeUntil(this.destroy$))
+                            .subscribe(
+                                () => {
+                                    this.successMessage = '¡Cuenta activada con éxito! Bienvenido.';
+                                    this.router.navigate(['/home']); // Navigate to home on successful login
+                                },
+                                (error) => {
+                                    this.errorMessage = 'Error al iniciar sesión. Por favor, intenta iniciar sesión manualmente.';
+                                    console.error('Error en el inicio de sesión:', error);
+                                }
+                            );
+                    } else {
+                        this.errorMessage = 'Falló el registro. Por favor, intenta de nuevo.';
+                    }
+                },
+                (error) => {
+                    console.error('Error en el registro:', error);
+                    this.errorMessage = 'Error en el registro. Por favor, inténtalo de nuevo más tarde.';
+                    this.isLoading = false; // Stop loading state
+                }
+            );
     } else {
-      this.validateAllFormFields(this.registerForm);
+        this.validateAllFormFields(this.registerForm); // Validate form fields and show errors
     }
-  }
+}
+
+
 
    // Toggles password visibility based on the field name
    togglePasswordVisibility(field: 'password' | 'confirmPassword'): void {

@@ -7,25 +7,30 @@ import { AuthService } from '../../../shared/core/auth.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
+  
   sidebarVisible: boolean = false;
   userName: string = 'Invitado';
   isArtist: boolean = false;
+  isActive: boolean = false; // Nueva propiedad para verificar si la cuenta está activa
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    // Obtener la información del usuario actual
     this.authService.getCurrentUser().subscribe(user => {
-      if (user && user.name) {
-        this.userName = user.name; // Establecer el nombre del usuario autenticado
-        this.isArtist = user.role && user.role === 'artist'; // Verificar si el usuario es un artista
-      } else {
-        this.userName = 'Invitado';
-        this.isArtist = false;
-      }
+        if (user) {
+            this.userName = user.name || 'Invitado'; // Establecer el nombre del usuario autenticado
+            this.isArtist = user.role && user.role === 'artist'; // Verificar si el usuario es un artista
+            this.isActive = user.isVerified; // Verificar si la cuenta está activa
+        } else {
+            this.userName = 'Invitado';
+            this.isArtist = false;
+            this.isActive = false; // En caso de que no haya usuario, la cuenta no está activa
+        }
     });
-  }
+}
+
+  
+
 
   toggleSidebar() {
     this.sidebarVisible = !this.sidebarVisible;
