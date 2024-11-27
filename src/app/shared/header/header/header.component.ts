@@ -9,7 +9,7 @@ import { AuthService } from '../../../shared/core/auth.service';
 export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
   ngOnInit(): void {
     // Suscribirse al estado de autenticación del AuthService

@@ -10,7 +10,7 @@ import { AuthService } from './shared/core/auth.service';
 export class AppComponent {
   title = 'RebelForge';
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private readonly authService: AuthService, private readonly router: Router) {
     // Asegurarse de que la navegación se complete
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {

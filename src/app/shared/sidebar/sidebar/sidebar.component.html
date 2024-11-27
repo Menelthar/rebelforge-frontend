@@ -4,7 +4,7 @@
       <div class="d-flex px-2 pb-2 pt-2">
         <div class="align-self-center">
           <a routerLink="/profile">
-            <img src="../../../../assets/images/pictures/7s.jpg" width="40" class="rounded-sm" alt="img">
+            <img src="" width="40" class="rounded-sm" alt="img">
           </a>
         </div>
         <div class="ps-2 align-self-center">
@@ -12,12 +12,6 @@
           <h5 class="ps-1 mb-1 pt-1 line-height-xs font-17">{{ userName }}</h5>
           <!-- Mostrar "Freelance Photographer" solo si el usuario es un artista -->
           <h6 *ngIf="isArtist" class="ps-1 mb-0 font-400 opacity-40 font-12">Artista</h6>
-          <!-- Mostrar el estado de la cuenta -->
-          <h6 class="ps-1 mb-0 font-400 opacity-40 font-12" [ngClass]="isActive ? 'text-success' : 'text-danger'">
-            {{ isActive ? 'Cuenta activa' : 'Cuenta inactiva' }}
-          </h6>
-          
-          
         </div>
         <div class="ms-auto">
           <a href="#" data-bs-toggle="dropdown" class="icon icon-m ps-3">
@@ -96,12 +90,12 @@
       <div class="content my-0">
         <h5 class="font-700 text-uppercase opacity-40 font-12 pt-2 mb-0">Bienvenido</h5>
         <div class="list-group list-custom-small list-icon-0">
-          <a routerLink="/login">
+          <a href="/login">
             <i class="fa fa-sign-in-alt gradient-green rounded-sm color-white"></i>
             <span>Iniciar Sesión</span>
             <i class="fa fa-angle-right"></i>
           </a>
-          <a routerLink="/register">
+          <a href="/register">
             <i class="fa fa-user-plus gradient-blue rounded-sm color-white"></i>
             <span>Registrarse</span>
             <i class="fa fa-angle-right"></i>
