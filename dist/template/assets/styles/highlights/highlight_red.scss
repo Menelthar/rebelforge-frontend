@@ -9,7 +9,6 @@ $colorHighlightDark: #DA4453;
 .gradient-highlight{background-image:linear-gradient(to bottom, $colorHighlightLight, $colorHighlightDark)!important;}
 
 //.form-control:focus,
-//.form-select:focus{border-color:$colorHighlightDark!important;}
 .footer-bar-2 .active-nav,
 .footer-bar-5 strong,
 .footer-bar-4 strong,
@@ -20,6 +19,4 @@ $colorHighlightDark: #DA4453;
 .form-floating-over > .form-control:focus ~ label{color:$colorHighlightDark;}
 .form-floating-over > .form-control:not(:placeholder-shown) ~ label{color:$colorHighlightDark;}
 .form-floating-over > .form-select ~ label{color:$colorHighlightDark;}
-.color-highlight{color:$colorHighlightDark;}
-.bg-highlight{background-color:$colorHighlightDark; color:#FFF!important;}
 .interest-check input:checked ~ label{color:#FFF!important; background-color:$colorHighlightDark!important;}

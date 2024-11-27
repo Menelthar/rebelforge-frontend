@@ -55,7 +55,17 @@
                   "maximumError": "5mb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "buildOptimizer": true,  
+              "optimization": {
+                "scripts": true,
+                "styles": true,   
+                "fonts": true     
+              },
+              "sourceMap": false,
+              "extractLicenses": true,  
+              "vendorChunk": false,  
+              "namedChunks": false  
             },
             "development": {
               "buildOptimizer": false,

@@ -45,15 +45,6 @@
   color: #DA4453;
 }
 
-.color-highlight {
-  color: #DA4453;
-}
-
-.bg-highlight {
-  background-color: #DA4453;
-  color: #FFF !important;
-}
-
 .interest-check input:checked ~ label {
   color: #FFF !important;
   background-color: #DA4453 !important;
