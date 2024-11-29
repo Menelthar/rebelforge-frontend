@@ -56,16 +56,16 @@
                 }
               ],
               "outputHashing": "all",
-              "buildOptimizer": true,  
+              "buildOptimizer": true,
               "optimization": {
                 "scripts": true,
-                "styles": true,   
-                "fonts": true     
+                "styles": true,
+                "fonts": true
               },
               "sourceMap": false,
-              "extractLicenses": true,  
-              "vendorChunk": false,  
-              "namedChunks": false  
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "namedChunks": false
             },
             "development": {
               "buildOptimizer": false,

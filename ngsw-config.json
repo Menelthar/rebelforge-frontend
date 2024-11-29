@@ -8,11 +8,10 @@
       "resources": {
         "files": [
           "/favicon.ico",
-          "/index.csr.html",
           "/index.html",
           "/manifest.webmanifest",
-          "/*.css",
-          "/*.js"
+          "/assets/styles/*.css",
+          "/assets/scripts/*.js"
         ]
       }
     },
@@ -22,8 +21,23 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/**/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)"
+          "/assets/images/**/*.{svg,cur,jpg,jpeg,png,apng,webp,avif,gif}",
+          "/assets/fonts/**/*.{otf,ttf,woff,woff2}",
+          "/assets/audio/**/*.{mp3,wav,ogg}"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": [
+        "https://api.tusitio.com/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxAge": "1d",
+        "maxEntries": 100
       }
     }
   ]
